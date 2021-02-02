@@ -1,0 +1,414 @@
+ /* global */
+
+@font-face {
+  font-family: "OpenSansCondensed";
+  src: url("static/Inter-Medium-slnt=0.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: ultra-condensed;
+}
+
+body {
+  margin: 0;
+}
+
+h3 {
+  font-family: "OpenSansCondensed";
+  font-size: 7rem;
+  color: #E5E5E5;
+  margin: 0 0 0 1rem;
+}
+
+h4 {
+  font-family: "OpenSansCondensed";
+  font-size: 2rem;
+  margin: 1rem 0 0 0;
+}
+
+a {
+  font-size: 3rem;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.filled-button {
+  background-color: #C14A1A;
+  color: white;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.inverted-button {
+  color: #C14A1A;
+  cursor: pointer;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* SVG */
+
+/* Portrait */
+#Shades {
+  display: none;
+}
+
+#Star_Eyes {
+  display: none;
+}
+
+/* navbar */
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  top: 0;
+  z-index: 2;
+}
+
+.navbar img {
+  height: 80%;
+  width: auto;
+  margin: 1rem 0 0 1rem;
+}
+
+#navbar-links {
+  position: -webkit-sticky;
+  position: sticky;
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+}
+
+#navbar-links a {
+  text-decoration: none;
+  padding: 0 1.5rem 0 1.5rem;
+  font-size: 2rem;
+  right: 0;
+  color: black;
+}
+
+.navbar-clicks {
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  margin-left: auto;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-clicks a {
+  text-decoration: none;
+  padding: 0 1.5rem 0 1.5rem;
+  font-size: 2rem;
+  right: 0;
+  color: black;
+}
+
+#not-available {
+  text-decoration: line-through;
+}
+
+/* Landing page */
+#landing {
+  flex-wrap: wrap;
+  display: flex;
+  /* border: 2px solid black; */
+  justify-content: flex-end;
+  /* background-image: url("images/vector-portrait.svg"); */
+  background-repeat: no-repeat;
+}
+
+#landing-portrait {
+  height: 100%;
+}
+
+.landing-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.landing-button-group .filled-button {
+  margin-right: 2rem;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: row;
+}
+
+#description {
+  height: 100%;
+  width: auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 3.3rem;
+  margin: 0 0 0 0;
+}
+
+h2 {
+  font-size: 3.3rem;
+  margin: 0 0 1rem 0;
+  font-weight: normal;
+}
+
+.upper {
+  position: relative;
+  right: 0;
+  width: auto;
+}
+
+.upper a {
+  text-decoration: none;
+  font-size: 2rem;
+  /* background-color: white; */
+  /* color: #1BA7D3; */
+  border: 2px solid;
+}
+
+.lower {
+  width: auto;
+  margin-top: auto;
+}
+
+.lower h3 {
+  text-align: left;
+  margin: 0 0 0 auto;
+  visibility: hidden;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  position: relative;
+  z-index: -1;
+}
+
+/* my information (contains about and projects page) */
+.my-info {
+  width: 100%;
+}
+
+
+/* About page */
+#about {
+  background-color: #5DBCD2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#about h3 {
+  position: relative;
+  color: #276CD3;
+  z-index: 1;
+}
+
+#about-picture {
+  height: 60vh;
+  margin-left: 1rem;
+  z-index: 0;
+}
+
+.about-content {
+  margin-left: 2rem;
+}
+
+.about-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-picture-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.about-picture-container .filled-button {
+  margin-top: 2rem;
+  padding: 2%;
+}
+
+.about-svg {
+  display: block;
+}
+
+.info {
+  display: flex;
+}
+
+.info p {
+  font-size: 1.5rem;
+  margin: 0;
+  position: relative;
+}
+
+/* Projects page */
+#projects {
+  /* background-color: #363636; */
+  height: 140vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#projects h3 {
+  color: #474747;
+}
+
+.project-showcase {
+  margin: 0 auto 0 auto;
+  width: 70vw;
+}
+
+.project-showcase img {
+  height: auto;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.project-showcase p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1550px) {
+  /* for large desktop screens */
+
+  /* global */
+  h3 {
+    font-family: "OpenSansCondensed";
+    color: #E5E5E5;
+  }
+
+  /* Navbar */
+  .navbar-clicks a {
+    padding: 0 1.5rem 0 1.5rem;
+    font-size: 3rem;
+  }
+
+  #navbar-links {
+    margin-left: auto;
+    right: 10vw;
+  }
+
+  #navbar-links a {
+    padding: 0 1.5rem 0 1.5rem;
+    font-size: 3rem;
+  }
+
+  /* landing page */
+  .page {
+    width: 78vw;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 10rem;
+  }
+
+  h2 {
+    font-size: 10rem;
+    font-weight: normal;
+  }
+
+  .upper a {
+    font-size: 3rem;
+    border-radius: 20px;
+  }
+
+  .lower h3 {
+    visibility: visible;
+    margin-top: auto;
+  }
+
+  /* About page */
+  .info img {
+  }
+
+  .info p {
+    font-size: 3rem;
+    width: 30rem;
+  }
+
+  /* Projects page */
+
+  .project-showcase {
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 10%;
+    height: auto;
+    width: 65vw;
+    margin: 3rem auto 0 auto;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 0% 5%;
+  }
+
+  .project-showcase img {
+    height: 100%;
+    margin: 0;
+  }
+
+  .project-showcase h4 {
+    font-size: 4rem;
+  }
+
+  .project-showcase p {
+    font-size: 2rem;
+  }
+
+  /* project layout */
+  .project-image-left {
+    grid-column: 1 / 4;
+  }
+
+  .project-info-right {
+    grid-column-start: 4;
+    grid-column-end: 6;
+  }
+
+  .project-image-right {
+    grid-column: 3 / 6;
+    grid-row: 1;
+  }
+
+  .project-info-left {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 1;
+  }
+
+
+}
