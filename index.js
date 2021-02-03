@@ -25,13 +25,10 @@ function addPortraitReactions() {
 function makeNavbarFixed() {
   const navbar = document.getElementById("info-navbar");
   const aboutPage = document.getElementById("about");
-  const myInfoSection = aboutPage.parentNode;
   const windowHeight = window.innerHeight;
   const scrollPast = aboutPage.offsetTop - windowHeight;
   const desiredBottom = (windowHeight * .90) - navbar.offsetHeight;
-  console.log("Pixels from top: " + scrollPast);
-  console.log("Pixels from top: " + desiredBottom);
-  window.onscroll = () => {toggleOnFixed(navbar, scrollPast, desiredBottom)};
+  toggleOnFixed(navbar, scrollPast, desiredBottom);
 }
 
 /**
@@ -43,17 +40,16 @@ function makeNavbarFixed() {
  * @param desiredBottom sets the limit to what the value can be.
  */
 function toggleOnFixed(element, scrollPast, desiredBottom) {
-  // const windowHeight = window.innerHeight;
-  // console.log("window height:" + windowHeight);
-  // if (document.body.scrollTop > scrollPast || document.documentElement.scrollTop > scrollPast) {
-  // if (document.body.scrollTop > scrollPast) {
+  const highlightNavlinkSvg = document.getElementById("highlight-navlink-svg");
   if ( document.documentElement.scrollTop > scrollPast) { // For Chrome, Firefox, IE and Opera
     navbarSetFixed(desiredBottom, element, scrollPast, document.documentElement.scrollTop);
+    highlightNavlinkSvg.style.display = "block";
   } else if (document.body.scrollTop > scrollPast) {  // For Safari
     navbarSetFixed(desiredBottom, element, scrollPast, document.body.scrollTop);
+    highlightNavlinkSvg.style.display = "block";
   } else {
     element.style.position = "static";
-    console.log("static");
+    highlightNavlinkSvg.style.display = "none";
   }
 }
 
@@ -72,7 +68,86 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+
+let navlinkHighlightedId = "about-navlink";
+
+function changeNavBarHighlight() {
+  const aboutPage = document.getElementById("about");
+  const scrollPastAbout = aboutPage.offsetTop + aboutPage.offsetHeight;
+  const aboutNavLink = document.getElementById("about-navlink");
+  const projectsNavLink = document.getElementById("projects-navlink");
+
+  const highlightNavLinkClassName = "current-page";
+
+  // when we pass the about
+  if (document.body.scrollTop > scrollPastAbout || document.documentElement.scrollTop > scrollPastAbout) {
+    addClassname(projectsNavLink, highlightNavLinkClassName);
+    removeClassName(aboutNavLink, highlightNavLinkClassName);
+    navlinkHighlightedId = "projects-navlink";
+  } else {
+    navlinkHighlightedId = "about-navlink";
+    addClassname(aboutNavLink, highlightNavLinkClassName);
+    removeClassName(projectsNavLink, highlightNavLinkClassName)
+  }
+}
+
+function addClassname(element, name) {
+  const classNameArr = element.className.split(" ");
+  if (classNameArr.indexOf(name) === -1) {
+    element.className += " " + name;
+  }
+}
+
+function removeClassName(element, name) {
+  element.classList.remove(name);
+}
+
+function setHighlightSvg() {
+  // Get elements
+  const highlightNavlinkSvg = document.getElementById("highlight-navlink-svg");
+  const navlinkHighlighted = document.getElementById(navlinkHighlightedId);
+
+  // get computed styles for navlink
+  const navLinkComputatedStyles = window.getComputedStyle(navlinkHighlighted);
+
+  // get bounding client rect for svg
+  const highlightNavlinkBcr = highlightNavlinkSvg.getBoundingClientRect();
+
+  // calculate left
+  const leftPaddingNavlink = turnPxStringToInt(navLinkComputatedStyles.getPropertyValue("padding-left"));
+  const rightPaddingNavlink = turnPxStringToInt(navLinkComputatedStyles.getPropertyValue("padding-right"));
+  const left = (leftPaddingNavlink + rightPaddingNavlink) / 2;
+
+  // calculate top
+  const topPaddingNavlink = turnPxStringToInt(navLinkComputatedStyles.getPropertyValue("padding-top"));
+  const bottomPaddingNavlink = turnPxStringToInt(navLinkComputatedStyles.getPropertyValue("padding-bottom"));
+  const navLinkedHeightWOPadding = navlinkHighlighted.offsetHeight - topPaddingNavlink - bottomPaddingNavlink;
+  const halfSvgHeightAboveNavlink = (highlightNavlinkBcr.height - navLinkedHeightWOPadding) / 2;
+
+  // navlinkHighlighted.offsetTop + topPaddingNavlink brings svg to the top of the highlight navlink
+  const top = navlinkHighlighted.offsetTop + topPaddingNavlink - halfSvgHeightAboveNavlink;
+  console.log("top: " + top);
+
+  // set svg style (position svg under highlighted nav)
+  highlightNavlinkSvg.style.top = top.toString() + "px";
+  highlightNavlinkSvg.style.width = navlinkHighlighted.offsetWidth.toString() + "px";
+  highlightNavlinkSvg.style.left = left.toString();
+}
+
+function turnPxStringToInt(pxValue) {
+  const numberStr = pxValue.substr(0, pxValue.length);
+  return parseInt(numberStr)
+}
+
+function addFunctionsToScroll() {
+  window.onscroll = () => {
+    makeNavbarFixed();
+    changeNavBarHighlight();
+    setHighlightSvg();
+  }
+}
+
 window.onload = function() {
   addPortraitReactions();
-  makeNavbarFixed();
+  addFunctionsToScroll();
 };
