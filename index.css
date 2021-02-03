@@ -52,8 +52,11 @@ a {
 }
 
 .page {
-  height: 100vh;
   width: 100vw;
+}
+
+.info-page {
+  min-height: 100vh;
 }
 
 /* SVG */
@@ -84,40 +87,31 @@ a {
   margin: 1rem 0 0 1rem;
 }
 
-#navbar-links {
-  position: -webkit-sticky;
-  position: sticky;
-  /* position: fixed; */
+.navbar-links {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-}
-
-#navbar-links a {
-  text-decoration: none;
-  padding: 0 1.5rem 0 1.5rem;
-  font-size: 2rem;
-  right: 0;
-  color: black;
-}
-
-.navbar-clicks {
-  position: -webkit-sticky;
-  position: sticky;
-  display: flex;
-  margin-left: auto;
   justify-content: flex-end;
-  align-items: center;
 }
 
-.navbar-clicks a {
+.navbar-links a {
   text-decoration: none;
-  padding: 0 1.5rem 0 1.5rem;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
   font-size: 2rem;
-  right: 0;
   color: black;
 }
+
+ .current-page {
+   /*background: url("./images/Highlight-Page-Name.svg");*/
+   color: #E5E5E5;
+ }
+
+/* navbar past landing page */
+ .navbar-info {
+   flex-direction: column;
+   right: 5%;
+   text-align: right;
+   z-index: 10;
+ }
 
 #not-available {
   text-decoration: line-through;
@@ -125,12 +119,13 @@ a {
 
 /* Landing page */
 #landing {
-  flex-wrap: wrap;
-  display: flex;
-  /* border: 2px solid black; */
-  justify-content: flex-end;
-  /* background-image: url("images/vector-portrait.svg"); */
   background-repeat: no-repeat;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 #landing-portrait {
@@ -150,6 +145,7 @@ a {
 .landing-page {
   display: flex;
   flex-direction: row;
+  height: 100vh;
 }
 
 #description {
@@ -203,6 +199,7 @@ h2 {
 /* my information (contains about and projects page) */
 .my-info {
   width: 100%;
+  z-index: 1;
 }
 
 
@@ -211,14 +208,14 @@ h2 {
   background-color: #5DBCD2;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 #about h3 {
   position: relative;
-  color: #276CD3;
+  /*color: #276CD3;*/
   z-index: 1;
 }
 
@@ -233,8 +230,9 @@ h2 {
 }
 
 .about-page {
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -254,6 +252,10 @@ h2 {
   display: block;
 }
 
+.about-svg-lower {
+  background-color: #363636;
+}
+
 .info {
   display: flex;
 }
@@ -266,7 +268,7 @@ h2 {
 
 /* Projects page */
 #projects {
-  /* background-color: #363636; */
+  background-color: #363636;
   height: 140vh;
   width: 100%;
   display: flex;
@@ -295,8 +297,10 @@ h2 {
 
 /* Footer */
 .footer {
-  width: 100%;
+  background-color: white;
   text-align: center;
+  width: 100%;
+  z-index: 1;
 }
 
 @media only screen and (min-width: 1550px) {
@@ -309,19 +313,19 @@ h2 {
   }
 
   /* Navbar */
-  .navbar-clicks a {
-    padding: 0 1.5rem 0 1.5rem;
-    font-size: 3rem;
-  }
 
-  #navbar-links {
+  .navbar-links {
     margin-left: auto;
-    right: 10vw;
   }
 
-  #navbar-links a {
-    padding: 0 1.5rem 0 1.5rem;
+  .navbar-links a {
+    padding-left: 3rem;
+    /*padding-top: 3rem;*/
     font-size: 3rem;
+  }
+
+  .current-page {
+    font-size: 7rem;
   }
 
   /* landing page */

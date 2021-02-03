@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <title>Kevin Cam</title>
     <link rel="stylesheet" href="index.css">
-    <script src="svgPortraitReactions.js"></script>
+    <script src="index.js"></script>
   </head>
-  <body onload="addPortraitReactions()">
+  <body>
     <div id="container">
-
       <section id="landing">
         <div class="page landing-page">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 452.5 730.89" id="landing-portrait">
@@ -366,7 +365,6 @@
           		</g>
           	</g>
           </svg>
-          <!-- <img src="images/vector-portrait.svg" alt="vector portrait of Kevin Cam" /> -->
           <div id="description">
             <div class="upper">
               <h1>Kevin Cam</h1>
@@ -377,32 +375,36 @@
               </div>
             </div>
             <div class="lower">
-              <h3>Home</h3>
+			  <nav class="navbar-links">
+				<a href="#landing">Home</a>
+<!--				  <svg viewBox="0 0 267 141" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--					  <path d="M215 16.0002C133.4 56.0002 71.3334 32.6669 50.5001 16.0002C28.9001 -3.99959 9.50004 7.66697 2.5 16.0002C18.5 35.0002 43.0001 73.0002 13.0001 73.0002C-24.4999 73.0002 34.5001 162.5 34.5001 136C34.5001 109.5 133 121.5 190 136C247 150.5 244 91.0002 240 73.0002C236 55.0002 317 -33.9998 215 16.0002Z" fill="#E9C978"/>-->
+<!--				  </svg>-->
+				  <a href="#about">About</a>
+				<a href="#projects">Projects</a>
+			  </nav>
             </div>
-            <nav id="navbar-links">
-              <a href="#landing">Home</a>
-              <a href="#about">About</a>
-              <a href="#projects">Projects</a>
-            </nav>
           </div>
         </div>
       </section>
 
       <section class="my-info">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 221.56" class="about-svg">
-          <defs>
-            <style>.about-background-cls{fill:#5dbcd2;}</style>
-          </defs>
-          <g id="Layer_2" data-name="Layer 2">
-            <g id="Layer_1-2" data-name="Layer 1">
-              <path class="about-background-cls" d="M1920,13.91V221.56H0S132.59-78,542.29,69.58s879.26,54.68,1000.63-4.51S1876.77-17.32,1920,13.91Z"/>
-            </g>
-          </g>
-        </svg>
+<!--	    <nav class="navbar-links">-->
+<!--		  <a href="#landing">Home</a>-->
+<!--		  <a href="#about">About</a>-->
+<!--		  <a href="#projects">Projects</a>-->
+<!--		</nav>-->
+		<svg viewBox="0 0 1442 279" fill="none" xmlns="http://www.w3.org/2000/svg" class="about-svg">
+		  <path d="M524 164C160.5 73.5 122 60.5 0 119.5V279H1441.5V3C1324 -8.5 1153.5 21.5 921 109C735 179 605.835 184.374 524 164Z" fill="#5DBCD2"/>
+		</svg>
         <section id="about">
-          <!-- <img src="./images/BackgroundSVG.svg" class="about-background"> -->
-          <div class="page about-page">
-            <!-- <h3>About</h3> -->
+          <div class="info-page page about-page">
+			<nav class="navbar-links navbar-info" id="info-navbar">
+			  <a href="#landing">Home</a>
+			  <a href="#about" class="current-page">About</a>
+			  <a href="#projects">Projects</a>
+			</nav>
+<!--			<h3>About</h3>-->
             <div class="info">
               <div class="about-picture-container">
                 <img id="about-picture" src="images/Kevin.png" alt="profile picture">
@@ -419,19 +421,17 @@
             </div>
           </div>
         </section>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 229.59" class="about-svg">
-          <defs>
-            <style>.about-background-cls{fill:#5dbcd2;}</style>
-          </defs>
-          <g id="Layer_2" data-name="Layer 2">
-            <g id="Layer_1-2" data-name="Layer 1">
-              <path class="about-background-cls" d="M1920,0V200.9c-44,12.23-92.81,25.73-146.72,28-103.22,4.35-266.19-10.61-505.13-87.84,0,0-350.84-92.38-502.82-63.64S148.94,317.79,0,144.6V0Z"/>
-            </g>
-          </g>
-        </svg>
+<!--		  <svg viewBox="0 0 1440 216" fill="none"-->
+<!--			   xmlns="http://www.w3.org/2000/svg" class="about-svg  about-svg-lower">-->
+<!--			  <path d="M240.417 212.91C119.66 240.461 38.32 76.7529 0 0H1441C1441 175.5 1461.37 229.376 1098 145C690.404 50.356 565.304 138.786 240.417 212.91Z" fill="#5DBCD2"/>-->
+<!--		  </svg>-->
 
+		  <svg viewBox="0 0 1440 137" fill="none"
+		  xmlns="http://www.w3.org/2000/svg" class="about-svg  about-svg-lower">
+		  <path d="M241 135C120.202 152.469 38.8333 48.6667 0.5 0H1442C1382.5 105 1307.5 98.5 944 45C536.262 -15.0109 566 88 241 135Z" fill="#5DBCD2"/>
+		</svg>
         <section id="projects">
-          <div class="page">
+          <div class="info-page page">
             <h3>Projects</h3>
             <div class="project-showcase">
               <!-- Schedify -->

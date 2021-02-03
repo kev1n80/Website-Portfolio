@@ -21,3 +21,5 @@ function addPortraitReactions() {
     shades.style.display = "none";
   })
 }
+
+export default addPortraitReactions;
