@@ -126,7 +126,6 @@ function setHighlightSvg() {
 
   // navlinkHighlighted.offsetTop + topPaddingNavlink brings svg to the top of the highlight navlink
   const top = navlinkHighlighted.offsetTop + topPaddingNavlink - halfSvgHeightAboveNavlink;
-  console.log("top: " + top);
 
   // set svg style (position svg under highlighted nav)
   highlightNavlinkSvg.style.top = top.toString() + "px";
@@ -145,6 +144,17 @@ function addFunctionsToScroll() {
     changeNavBarHighlight();
     setHighlightSvg();
   }
+}
+
+function addOnHoverToProjects() {
+  let projects = document.getElementsByClassName("project");
+  for(let i = 0; i < projects.length; i++) {
+    addOnHoverToProject(projects[i]);
+  }
+}
+
+function addOnHoverToProject(project) {
+
 }
 
 window.onload = function() {
