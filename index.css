@@ -314,6 +314,7 @@ h2 {
 .project {
   align-items: center;
   background-color: #d69fb8;
+  box-shadow: 0.5rem 0.5rem 1rem black;
   display: flex;
   height: 50vh;
   justify-content: center;
