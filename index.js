@@ -72,22 +72,28 @@ function scrollToTop() {
 let navlinkHighlightedId = "about-navlink";
 
 function changeNavBarHighlight() {
-  const aboutPage = document.getElementById("about");
-  const scrollPastAbout = aboutPage.offsetTop + aboutPage.offsetHeight;
+  const navbar = document.getElementById("info-navbar");
+  const projectsPage = document.getElementById("projects");
+  const scrollPastAbout = projectsPage.offsetTop - navbar.offsetHeight;
+  const homeNavLink = document.getElementById("home-navlink");
   const aboutNavLink = document.getElementById("about-navlink");
   const projectsNavLink = document.getElementById("projects-navlink");
 
   const highlightNavLinkClassName = "current-page";
 
-  // when we pass the about
+  // when we pass the about section
   if (document.body.scrollTop > scrollPastAbout || document.documentElement.scrollTop > scrollPastAbout) {
     addClassname(projectsNavLink, highlightNavLinkClassName);
     removeClassName(aboutNavLink, highlightNavLinkClassName);
+    aboutNavLink.style.color = "white";
+    homeNavLink.style.color = "white";
     navlinkHighlightedId = "projects-navlink";
   } else {
     navlinkHighlightedId = "about-navlink";
     addClassname(aboutNavLink, highlightNavLinkClassName);
     removeClassName(projectsNavLink, highlightNavLinkClassName)
+    aboutNavLink.style.color = "black";
+    homeNavLink.style.color = "black";
   }
 }
 

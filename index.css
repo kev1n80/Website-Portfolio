@@ -8,6 +8,10 @@
   font-stretch: ultra-condensed;
 }
 
+ * {
+   font-family: 'Inter', sans-serif;
+ }
+
 body {
   margin: 0;
 }
@@ -39,20 +43,27 @@ a {
   font-family: sans-serif;
 }
 
+.button {
+  box-shadow: .5rem .5rem grey;
+  cursor: pointer;
+}
+
 .filled-button {
   background-color: #C14A1A;
   color: white;
-  cursor: pointer;
   width: fit-content;
 }
 
 .inverted-button {
+  background: white;
+  border: 2px solid;
   color: #C14A1A;
   cursor: pointer;
+
 }
 
 .page {
-  width: 100vw;
+  width: 78vw;
 }
 
 .info-page {
@@ -105,17 +116,18 @@ a {
  .current-page {
    /*background: url("./images/Highlight-Page-Name.svg");*/
    color: #E5E5E5;
-   font-size: 7rem !important;
+   font-size: 5.5rem !important;
  }
 
- .highlight-current_page-navlink {
+ .highlight-current-page-navlink {
    position: absolute;
+   display: none;
  }
 
 /* navbar past landing page */
  .navbar-info {
    flex-direction: column;
-   right: 5%;
+   right: 2.5%;
    text-align: right;
    z-index: 10;
  }
@@ -129,7 +141,6 @@ a {
   background-repeat: no-repeat;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -153,6 +164,7 @@ a {
   display: flex;
   flex-direction: row;
   height: 100vh;
+  justify-content: center;
 }
 
 #description {
@@ -185,7 +197,6 @@ h2 {
   font-size: 2rem;
   /* background-color: white; */
   /* color: #1BA7D3; */
-  border: 2px solid;
 }
 
 .lower {
@@ -232,6 +243,11 @@ h2 {
   z-index: 0;
 }
 
+#about .filled-button {
+  border-bottom: 2px solid #5DBCD2;
+  border-right: 2px solid #5DBCD2;
+}
+
 .about-content {
   margin-left: 2rem;
 }
@@ -264,7 +280,10 @@ h2 {
 }
 
 .info {
+  align-items: center;
   display: flex;
+  justify-content: center;
+  width: 78vw;
 }
 
 .info p {
@@ -287,30 +306,29 @@ h2 {
 
 .project-showcase {
   display: flex;
-  margin: 0 auto 0 auto;
+  justify-content: space-evenly;
+  margin: 10rem auto 10rem auto;
   width: 70vw;
 }
 
 .project {
-  background-color: #ADA0A6;
+  align-items: center;
+  background-color: #d69fb8;
   display: flex;
+  height: 50vh;
   justify-content: center;
+  min-height: 450px;
   position: relative;
-  width: 40%;
+  width: 35%;
 }
 
 .project img {
   width: 80%;
 }
 
-.project p {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.project-info {
-  background-color: #000;
-  color: white;
+.project-overlay {
+  align-items: center;
+  background-color: #d69fb8;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -322,11 +340,55 @@ h2 {
   width: 100%;
 }
 
- .project:hover .project-info {
-   opacity: 0.8;
+ .project-overlay .filled-button {
+   border-bottom: 2px solid #d69fb8;
+   border-right: 2px solid #d69fb8;
  }
 
+ .project-overlay a {
+   box-shadow: .4rem .4rem grey;
+   font-size: 2rem;
+   padding: 2%;
+   text-decoration: none;
+ }
 
+ .project-buttons {
+   display: flex;
+   justify-content: space-evenly;
+   width: 70%;
+ }
+
+ .project-description  {
+   font-size: 1.5rem;
+ }
+
+ .project-info {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 80%;
+ }
+
+.project:hover .project-overlay {
+  opacity: 0.95;
+}
+
+.project-year {
+  margin: 0;
+  position: absolute;
+  right: 5%;
+  top: 7%;
+  transform: translateY(-100%);
+}
+
+.project-title {
+  font-size: 3rem;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 7%;
+  transform: translateX(-50%);
+}
 
 /* Footer */
 .footer {
@@ -336,12 +398,39 @@ h2 {
   z-index: 1;
 }
 
-@media only screen and (min-width: 1550px) {
+@media only screen and (min-width: 800px) {
+  h1, h2 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1310px) {
+ h1, h2 {
+   font-size: 5rem;
+ }
+}
+
+@media only screen and (min-width: 1410px) {
+ h1, h2 {
+   font-size: 6rem;
+ }
+}
+
+@media only screen and (min-width: 1515px) {
+ h1, h2 {
+   font-size: 7rem;
+ }
+}
+
+@media only screen and (min-width: 1650px) {
   /* for large desktop screens */
 
   /* global */
+  h1, h2 {
+    font-size: 8.5rem;
+  }
+
   h3 {
-    font-family: "OpenSansCondensed";
     color: #E5E5E5;
   }
 
@@ -367,15 +456,6 @@ h2 {
     /*z-index: 1;*/
   }
 
-  h1 {
-    font-size: 10rem;
-  }
-
-  h2 {
-    font-size: 10rem;
-    font-weight: normal;
-  }
-
   .upper a {
     font-size: 3rem;
     border-radius: 20px;
@@ -387,16 +467,13 @@ h2 {
   }
 
   /* About page */
-  .info img {
-  }
 
   .info p {
-    font-size: 3rem;
+    font-size: 2.5rem;
     width: 30rem;
   }
-
-  /* Projects page */
-
-
-
 }
+
+ @media only screen and (max-height: 800px) {
+
+ }
