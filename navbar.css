@@ -1,0 +1,86 @@
+/* navbar */
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  top: 0;
+  z-index: 2;
+}
+
+.navbar img {
+  height: 80%;
+  width: auto;
+  margin: 1rem 0 0 1rem;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-links a {
+  color: black;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
+  text-decoration: none;
+  z-index: 1;
+}
+
+ .current-page {
+   /*background: url("./images/Highlight-Page-Name.svg");*/
+   color: #E5E5E5;
+   font-size: 3.5rem !important;
+ }
+
+ .highlight-current-page-navlink {
+   position: absolute;
+   display: none;
+ }
+
+/* navbar past landing page */
+ .navbar-info {
+   flex-direction: column;
+   right: 2.5%;
+   text-align: right;
+   z-index: 10;
+ }
+
+#not-available {
+  text-decoration: line-through;
+}
+
+/* For vertical screen users */
+@media only screen and (min-width: 200px) and (max-width: 500px) {
+  /* TODO: This style is not being applied */
+  .navbar-links a {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .navbar-links a {
+    font-size: 2rem;
+  }
+}
+
+/* For horizontasl screen users */
+@media only screen and (min-width: 1650px) {
+  /* for large desktop screens */
+
+  .navbar-links {
+    margin-left: auto;
+  }
+
+  .navbar-links a {
+    padding-left: 3rem;
+    /*padding-top: 3rem;*/
+    font-size: 3rem;
+  }
+
+  .current-page {
+    font-size: 7rem !important;
+  }
+}

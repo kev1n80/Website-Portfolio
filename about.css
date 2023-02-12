@@ -1,0 +1,100 @@
+/* About page */
+#about {
+  background-color: #5DBCD2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 5rem 2rem;
+  width: 100%;
+}
+
+#about h3 {
+  position: relative;
+  /*color: #276CD3;*/
+  z-index: 1;
+}
+
+#about-picture {
+  height: 60vh;
+  margin-left: 1rem;
+  z-index: 0;
+}
+
+#about .filled-button {
+  border-bottom: 2px solid #5DBCD2;
+  border-right: 2px solid #5DBCD2;
+}
+
+.about-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 2rem 0;
+  row-gap: 4rem;
+}
+
+.about-svg {
+  display: block;
+}
+
+.about-svg-lower {
+  background-color: #363636;
+}
+
+.info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info a {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.info p {
+  font-size: 1.5rem;
+  margin: 0;
+  position: relative;
+}
+
+.info-page {
+  /* min-height: 100vh; */
+}
+
+/* Vertical Screens */
+@media only screen and (max-width: 800px) {
+  .about-content {
+    margin-top: 2rem;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 950px) {
+  .info p {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1100px) {
+  .info p {
+    font-size: 1.3rem;
+  }
+}
+
+/* Horizontal Screens */
+@media only screen and (min-width: 1650px) {
+  /* for large desktop screens */
+  .info p {
+    font-size: 2.5rem;
+  }
+}
