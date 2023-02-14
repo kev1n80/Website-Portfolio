@@ -41,7 +41,7 @@ function makeNavbarFixed() {
  */
 function toggleOnFixed(element, scrollPast, desiredBottom) {
   const highlightNavlinkSvg = document.getElementById("highlight-navlink-svg");
-  if ( document.documentElement.scrollTop > scrollPast) { // For Chrome, Firefox, IE and Opera
+  if (document.documentElement.scrollTop > scrollPast) { // For Chrome, Firefox, IE and Opera
     navbarSetFixed(desiredBottom, element, scrollPast, document.documentElement.scrollTop);
     highlightNavlinkSvg.style.display = "block";
   } else if (document.body.scrollTop > scrollPast) {  // For Safari
@@ -144,11 +144,15 @@ function turnPxStringToInt(pxValue) {
   return parseInt(numberStr)
 }
 
+function setNavbarStyles() {
+  makeNavbarFixed();
+  changeNavBarHighlight();
+  setHighlightSvg();
+}
+
 function addFunctionsToScroll() {
   window.onscroll = () => {
-    makeNavbarFixed();
-    changeNavBarHighlight();
-    setHighlightSvg();
+    setNavbarStyles();
   }
 }
 
@@ -166,4 +170,5 @@ function addOnHoverToProject(project) {
 window.onload = function() {
   addPortraitReactions();
   addFunctionsToScroll();
+  setNavbarStyles();
 };
