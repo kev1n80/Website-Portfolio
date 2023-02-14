@@ -67,17 +67,25 @@
   display: flex;
 }
 
-.info-container img {
-  height: 45vh;
-}
-
 .info-page {
   /* min-height: 100vh; */
+}
+
+.image-hobby{
+  height: 45vh;
 }
 
 .left {
   flex-direction: row-reverse;
   text-align: end;
+}
+
+.logo {
+  height: 15vh;
+}
+
+.logo-container {
+  align-items: center;
 }
 
 .right {
