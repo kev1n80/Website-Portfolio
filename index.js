@@ -1,3 +1,21 @@
+// MISCELLANEOUS
+function addClassname(element, name) {
+  const classNameArr = element.className.split(" ");
+  if (classNameArr.indexOf(name) === -1) {
+    element.className += " " + name;
+  }
+}
+
+function removeClassName(element, name) {
+  element.classList.remove(name);
+}
+
+function turnPxStringToInt(pxValue) {
+  const numberStr = pxValue.substr(0, pxValue.length);
+  return parseInt(numberStr)
+}
+
+// HOME PAGE PORTRAIT SVG INTERACTIVITY
 function addPortraitReactions() {
   let contactMeButton = document.getElementById("contact-me");
   let resumeButton = document.getElementById("resume");
@@ -22,6 +40,7 @@ function addPortraitReactions() {
   });
 }
 
+// NAVBAR
 function makeNavbarFixed() {
   const navbar = document.getElementById("info-navbar");
   const aboutPage = document.getElementById("about");
@@ -97,17 +116,6 @@ function changeNavBarHighlight() {
   }
 }
 
-function addClassname(element, name) {
-  const classNameArr = element.className.split(" ");
-  if (classNameArr.indexOf(name) === -1) {
-    element.className += " " + name;
-  }
-}
-
-function removeClassName(element, name) {
-  element.classList.remove(name);
-}
-
 function setHighlightSvg() {
   // Get elements
   const highlightNavlinkSvg = document.getElementById("highlight-navlink-svg");
@@ -139,32 +147,55 @@ function setHighlightSvg() {
   highlightNavlinkSvg.style.left = left.toString();
 }
 
-function turnPxStringToInt(pxValue) {
-  const numberStr = pxValue.substr(0, pxValue.length);
-  return parseInt(numberStr)
-}
-
 function setNavbarStyles() {
   makeNavbarFixed();
   changeNavBarHighlight();
   setHighlightSvg();
 }
 
+// BUBBLES 
+
+var lastBubbleTime = 0;
+const bufferTimeSec = 5;
+
+// Add bubbles depending on width and height of page
+function createBubbles() {
+  // set position to below screen
+
+  // Make it random?
+
+  // Add tiny bubbles 
+
+  // Add medium sized bubbles
+
+  // Add large bubbles
+}
+
+function bubblesAnimation() {
+  // TODO: if position is before about the set reset to true
+  // - Should we trigger when scrolling up or only when scrolling down???
+
+  const aboutPage = document.getElementById("about");
+  const scrollDownPastAbout = aboutPage.offsetTop;
+  const documentScrollBottom = document.documentElement.scrollTop + screen.height;
+  const scrollUpPastAboutPage = documentScrollBottom < scrollDownPastAbout + 100;
+  const scrollDownPastAboutPage = documentScrollBottom > scrollDownPastAbout;
+  const scrollPastTriggerArea = scrollUpPastAboutPage && scrollDownPastAboutPage;
+  const animationReady = Date.now() - lastBubbleTime > bufferTimeSec * 1000;
+
+  if (scrollPastTriggerArea && animationReady) {
+    lastBubbleTime = Date.now();
+    console.log("animation Ready");
+    // Start animation of moving bubbles hidden at bottom of screen to move past the top of screen
+  }
+}
+
+// ADD FUNCTIONS TO WEBSITE
 function addFunctionsToScroll() {
   window.onscroll = () => {
     setNavbarStyles();
+    bubblesAnimation();
   }
-}
-
-function addOnHoverToProjects() {
-  let projects = document.getElementsByClassName("project");
-  for(let i = 0; i < projects.length; i++) {
-    addOnHoverToProject(projects[i]);
-  }
-}
-
-function addOnHoverToProject(project) {
-
 }
 
 window.onload = function() {
