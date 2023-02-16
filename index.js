@@ -158,9 +158,38 @@ function setNavbarStyles() {
 var lastBubbleTime = 0;
 const bufferTimeSec = 5;
 
+// Randomly adds a bubble to the screen
+function createBubble() {
+  const bubble = document.createElement('img');
+  bubble.src = "./images/bubble.svg";
+  bubble.alt = "bubble";
+  bubble.className = "water-bubbles";
+
+  // Choose a random y position for the bubble
+  bubble.style.left = `${Math.random() * 100}%`;
+
+  document.getElementById("landing").appendChild(bubble);
+  return bubble;
+}
+
 // Add bubbles depending on width and height of page
 function createBubbles() {
   // set position to below screen
+  const bubble = createBubble();
+
+  const parentWidth = document.getElementById("landing").offsetWidth;
+  const bubbleWidth = bubble.offsetWidth;
+
+  // Number of bubbles to create 
+  const maxNumBubbles = parentWidth / bubbleWidth;
+  const minNumBubbles = max / 2;
+
+  // Randomly create bubbles
+  const numBubbles = 5;
+
+  for (var i = 0; i < numBubbles - 1; i++) {
+    createBubble();
+  }
 
   // Make it random?
 
@@ -169,6 +198,11 @@ function createBubbles() {
   // Add medium sized bubbles
 
   // Add large bubbles
+}
+
+function floatBubbleUpwards(bubble) {
+  bubble.style.transition = "1s";
+  bubble.style.top = "0";
 }
 
 function bubblesAnimation() {
@@ -186,7 +220,12 @@ function bubblesAnimation() {
   if (scrollPastTriggerArea && animationReady) {
     lastBubbleTime = Date.now();
     console.log("animation Ready");
+    createBubbles();
     // Start animation of moving bubbles hidden at bottom of screen to move past the top of screen
+    // document.getElementsByClassName("water-bubbles").array.forEach(floatBubbleUpwards);
+    for (const bubble of document.getElementsByClassName("water-bubbles")) {
+      // floatBubbleUpwards(bubble);
+    }
   }
 }
 

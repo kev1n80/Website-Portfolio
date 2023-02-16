@@ -28,6 +28,22 @@ a {
   padding: 1%;
 }
 
+.water-bubbles {
+  bottom: 0;
+  position: absolute;
+  animation: 3s 1 normal floatup;
+}
+
+@keyframes floatup {
+  from {
+    bottom: 0%;
+  }
+
+  to {
+    bottom: 100%;
+  }
+}
+
 #container {
   width: 100%;
   display: flex;
