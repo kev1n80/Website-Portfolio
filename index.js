@@ -177,21 +177,22 @@ function createBubbles() {
   // set position to below screen
   const bubble = createBubble();
 
-  const parentWidth = document.getElementById("landing").offsetWidth;
-  const bubbleWidth = bubble.offsetWidth;
+  bubble.onload = function(){
+    const parentWidth = document.getElementById("landing").offsetWidth;
+    const bubbleWidth = bubble.clientWidth;
 
-  // Number of bubbles to create 
-  const maxNumBubbles = parentWidth / bubbleWidth;
-  const minNumBubbles = max / 2;
+    // Number of bubbles to create
+    const maxNumBubbles = parentWidth / bubbleWidth;
+    const max = maxNumBubbles / 2;
+    const min = maxNumBubbles / 3;
 
-  // Randomly create bubbles
-  const numBubbles = 5;
+    // Randomly create bubbles
+    const numBubbles = Math.random() * (max - min + 1) + min;
 
-  for (var i = 0; i < numBubbles - 1; i++) {
-    createBubble();
+    for (var i = 0; i < numBubbles - 1; i++) {
+      createBubble();
+    }
   }
-
-  // Make it random?
 
   // Add tiny bubbles 
 
