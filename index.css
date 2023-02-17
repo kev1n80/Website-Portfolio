@@ -31,7 +31,6 @@ a {
 .water-bubbles {
   bottom: 0;
   position: absolute;
-  animation: 3s 1 normal floatup;
 }
 
 @keyframes floatup {

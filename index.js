@@ -156,7 +156,11 @@ function setNavbarStyles() {
 // BUBBLES 
 
 var lastBubbleTime = 0;
-const bufferTimeSec = 5;
+const bufferTimeMS = 7500;
+let bubbleIntervalId = 0;
+const bubbleAnimationTimeoutMS = 250;
+const bubbleAnimationDurationMS = 1500;
+const bubbleParentId = "landing";
 
 // Randomly adds a bubble to the screen
 function createBubble() {
@@ -167,9 +171,31 @@ function createBubble() {
 
   // Choose a random y position for the bubble
   bubble.style.left = `${Math.random() * 100}%`;
+  bubble.style.animation = `${bubbleAnimationDurationMS / 1000}s 1 normal floatup`;
 
-  document.getElementById("landing").appendChild(bubble);
+  document.getElementById(bubbleParentId).appendChild(bubble);
+
+  // Remove bubble after animation ends
+  setTimeout(function() {bubble.remove()}, bubbleAnimationDurationMS - 10);
+
   return bubble;
+}
+
+function createBubbleRow(bubble) {
+  const parentWidth = document.getElementById(bubbleParentId).offsetWidth;
+  const bubbleWidth = bubble.clientWidth;
+
+  // Number of bubbles to create
+  const maxNumBubbles = parentWidth / bubbleWidth;
+  const max = maxNumBubbles / 2;
+  const min = maxNumBubbles / 3;
+  
+  // Randomly create bubbles
+  const numBubbles = Math.random() * (max - min + 1) + min;
+
+  for (var i = 0; i < numBubbles - 1; i++) {
+    createBubble();
+  }
 }
 
 // Add bubbles depending on width and height of page
@@ -178,20 +204,23 @@ function createBubbles() {
   const bubble = createBubble();
 
   bubble.onload = function(){
-    const parentWidth = document.getElementById("landing").offsetWidth;
-    const bubbleWidth = bubble.clientWidth;
+    const bubbleHeight = bubble.clientHeight;
 
-    // Number of bubbles to create
-    const maxNumBubbles = parentWidth / bubbleWidth;
-    const max = maxNumBubbles / 2;
-    const min = maxNumBubbles / 3;
+    // Number of rows of bubbles to create
+    const maxNumRows = screen.height / bubbleHeight;
+    const minRows = maxNumRows * .75;
 
-    // Randomly create bubbles
-    const numBubbles = Math.random() * (max - min + 1) + min;
+    // Randomly create rows of bubbles
+    const numRows = Math.random() * (maxNumRows - minRows + 1) + minRows;
+    var curRows = 0;
 
-    for (var i = 0; i < numBubbles - 1; i++) {
-      createBubble();
-    }
+    bubbleIntervalId = setInterval(function() {
+      createBubbleRow(bubble);
+      curRows += 1;
+      if (curRows >= numRows) {
+        clearInterval(bubbleIntervalId);
+      }
+    }, bubbleAnimationTimeoutMS);
   }
 
   // Add tiny bubbles 
@@ -201,14 +230,10 @@ function createBubbles() {
   // Add large bubbles
 }
 
-function floatBubbleUpwards(bubble) {
-  bubble.style.transition = "1s";
-  bubble.style.top = "0";
-}
-
 function bubblesAnimation() {
   // TODO: if position is before about the set reset to true
   // - Should we trigger when scrolling up or only when scrolling down???
+  // - If we scroll down, should we animate in reverse?
 
   const aboutPage = document.getElementById("about");
   const scrollDownPastAbout = aboutPage.offsetTop;
@@ -216,17 +241,14 @@ function bubblesAnimation() {
   const scrollUpPastAboutPage = documentScrollBottom < scrollDownPastAbout + 100;
   const scrollDownPastAboutPage = documentScrollBottom > scrollDownPastAbout;
   const scrollPastTriggerArea = scrollUpPastAboutPage && scrollDownPastAboutPage;
-  const animationReady = Date.now() - lastBubbleTime > bufferTimeSec * 1000;
+  const animationReady = Date.now() - lastBubbleTime > bufferTimeMS;
 
   if (scrollPastTriggerArea && animationReady) {
     lastBubbleTime = Date.now();
+    
+    // Start animation of moving bubbles hidden at bottom of screen to move past the top of screen
     console.log("animation Ready");
     createBubbles();
-    // Start animation of moving bubbles hidden at bottom of screen to move past the top of screen
-    // document.getElementsByClassName("water-bubbles").array.forEach(floatBubbleUpwards);
-    for (const bubble of document.getElementsByClassName("water-bubbles")) {
-      // floatBubbleUpwards(bubble);
-    }
   }
 }
 
