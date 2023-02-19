@@ -155,12 +155,12 @@ function setNavbarStyles() {
 
 // BUBBLES 
 
-var lastBubbleTime = 0;
-const bufferTimeMS = 7500;
-let bubbleIntervalId = 0;
 const bubbleAnimationTimeoutMS = 250;
 const bubbleAnimationDurationMS = 1500;
+let bubbleIntervalId = 0;
 const bubbleParentId = "landing";
+const bufferTimeMS = bubbleAnimationDurationMS + 2750;
+var lastBubbleTime = 0;
 
 // Randomly adds a bubble to the screen
 function createBubble() {
@@ -223,6 +223,7 @@ function createBubbles() {
     }, bubbleAnimationTimeoutMS);
   }
 
+  // Maybe use fractions to make a certain number of these?
   // Add tiny bubbles 
 
   // Add medium sized bubbles
@@ -247,9 +248,41 @@ function bubblesAnimation() {
     lastBubbleTime = Date.now();
     
     // Start animation of moving bubbles hidden at bottom of screen to move past the top of screen
-    console.log("animation Ready");
     createBubbles();
   }
+}
+
+// Change one-word description of you
+// const adjectives = ["Engineer", "Artist", "Dancer", "Latino"];
+const adjectives = ["Artist", "Dancer", "Latino", "Engineer"];
+var adjectiveIndex = 0;
+const wordChangeTimeoutMS = 1000;
+const wordChangeBufferMS = wordChangeTimeoutMS * adjectives.length + 4000;
+var adjectiveIntervalId = -1;
+
+function setAdjective() {
+  console.log(`Index: ${adjectiveIndex}`);
+  const adjective = document.getElementById("adjective");
+  adjective.innerHTML = adjectives[adjectiveIndex];
+}
+
+function cycleAdjective() {
+  adjectiveIntervalId = setInterval(function() {
+    // console.log(`Interval id: ${adjectiveIntervalId}`);
+    // Change the adjective
+    // setAdjective();
+    
+    // console.log(`Index: ${adjectiveIndex}`);
+
+    if (adjectiveIndex >= adjectives.length - 1) {
+      clearInterval(adjectiveIntervalId);
+      // adjectiveIndex = 0;
+      // adjectiveIntervalId = -1;
+    } else {
+      setAdjective();
+      adjectiveIndex += 1;
+    }
+  }, wordChangeTimeoutMS);
 }
 
 // ADD FUNCTIONS TO WEBSITE
@@ -264,4 +297,14 @@ window.onload = function() {
   addPortraitReactions();
   addFunctionsToScroll();
   setNavbarStyles();
+
+  // TODO: have changeAdjective change to "Artist" rather than "Engineer"
+  cycleAdjective();
+  console.log("test");
+  setInterval(function() {
+    console.log("Start again");
+    setAdjective();
+    adjectiveIndex = 0;
+    cycleAdjective();
+  }, wordChangeBufferMS);
 };
