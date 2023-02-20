@@ -253,31 +253,24 @@ function bubblesAnimation() {
 }
 
 // Change one-word description of you
+// TODO: Use this list where engineer is the first word
 // const adjectives = ["Engineer", "Artist", "Dancer", "Latino"];
 const adjectives = ["Artist", "Dancer", "Latino", "Engineer"];
 var adjectiveIndex = 0;
-const wordChangeTimeoutMS = 1000;
+const wordChangeTimeoutMS = 750;
 const wordChangeBufferMS = wordChangeTimeoutMS * adjectives.length + 4000;
 var adjectiveIntervalId = -1;
 
 function setAdjective() {
-  console.log(`Index: ${adjectiveIndex}`);
   const adjective = document.getElementById("adjective");
   adjective.innerHTML = adjectives[adjectiveIndex];
 }
 
 function cycleAdjective() {
   adjectiveIntervalId = setInterval(function() {
-    // console.log(`Interval id: ${adjectiveIntervalId}`);
-    // Change the adjective
-    // setAdjective();
-    
-    // console.log(`Index: ${adjectiveIndex}`);
 
     if (adjectiveIndex >= adjectives.length - 1) {
       clearInterval(adjectiveIntervalId);
-      // adjectiveIndex = 0;
-      // adjectiveIntervalId = -1;
     } else {
       setAdjective();
       adjectiveIndex += 1;
@@ -300,9 +293,7 @@ window.onload = function() {
 
   // TODO: have changeAdjective change to "Artist" rather than "Engineer"
   cycleAdjective();
-  console.log("test");
   setInterval(function() {
-    console.log("Start again");
     setAdjective();
     adjectiveIndex = 0;
     cycleAdjective();

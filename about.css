@@ -44,6 +44,12 @@
   background-color: #363636;
 }
 
+.fun-infos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
 .info {
   display: flex;
   flex-direction: column;
@@ -72,7 +78,7 @@
 }
 
 .image-hobby{
-  height: 45vh;
+  width: 30vw;
 }
 
 .left {
@@ -81,7 +87,7 @@
 }
 
 .logo {
-  height: 15vh;
+  width: 10vw;
 }
 
 .logo-container {
@@ -92,7 +98,19 @@
   text-align: start;
 }
 
+.technical-infos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
 /* Vertical Screens */
+@media only screen and (max-width: 600px) {
+  .image-hobby {
+    width: 50vw;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .about-content {
     margin-top: 2rem;
@@ -100,6 +118,20 @@
 
   .info {
     flex-direction: column;
+  }
+
+  .info p {
+    font-size: 1.5rem;
+  }
+
+  .image-hobby {
+    width: 45vw;
+  }
+
+  .fun-infos .info-container {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -112,6 +144,10 @@
 @media only screen and (min-width: 950px) and (max-width: 1100px) {
   .info p {
     font-size: 1.3rem;
+  }
+
+  .image-hobby {
+    width: 40vw;
   }
 }
 

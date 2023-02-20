@@ -59,7 +59,6 @@ h2 {
   bottom: 0;
   right: 0;
   position: absolute;
-  /* margin-top: auto; */
   width: auto;
 }
 
@@ -94,11 +93,19 @@ h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   text-decoration: none;
-  /* background-color: white; */
-  /* color: #1BA7D3; */
 }
 
 /* For vertical screen users */
+@media only screen and (max-width: 600px) {
+  #landing-portrait {
+    position: relative;
+    top: 10%;
+  }
+
+  .upper a {
+    font-size: 1.5rem;
+  }
+}
 
 @media only screen and (max-width: 1000px) {
   .intro {
@@ -110,10 +117,11 @@ h2 {
 
   .landing-button-group {
     justify-content: center;
+    width: 100vw;
   }
 
   #landing-portrait {
-    height: 70%;
+    height: 60%;
   }
 
   .lower {
@@ -128,17 +136,10 @@ h2 {
 }
 
 /* For horizontal screen users */
-@media only screen and (max-width: 1200px) {
-  .upper h1 {
-    /* margin-left: 3rem; */
-  }
-}
-
 @media only screen and (min-width: 1650px) {
 /* for large desktop screens */
   .page {
     width: 78vw;
-    /*z-index: 1;*/
   }
 
   .upper a {

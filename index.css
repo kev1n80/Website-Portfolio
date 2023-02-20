@@ -12,9 +12,9 @@ body {
 }
 
 h3 {
-  font-size: 4rem;
   color: #E5E5E5;
   margin: 0;
+  text-align: center;
 }
 
 h4 {
@@ -89,10 +89,6 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-#projects h3 {
-  color: #474747;
 }
 
 .project-showcase {
@@ -192,14 +188,35 @@ a {
   z-index: 1;
 }
 
+/* For vertical screen users */
+@media only screen and (max-width: 600px) {
+  h1, h2 {
+    font-size: 4rem;
+  }  
+}
+
+@media only screen and (max-width: 800px) {
+  h3 {
+    font-size: 3rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
 @media only screen and (min-width: 800px) {
+  h3 {
+    font-size: 3.5rem;
+  }
+
+  /* TODO: Check why this has a `!important` */
   .current-page {
     font-size: 4.5rem !important;
   }
 }
 
-/* For vertical screen users */
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
   h1, h2 {
     font-size: 6rem;
   }
@@ -259,6 +276,10 @@ a {
   /* global */
   h1, h2 {
     font-size: 8.5rem;
+  }
+
+  h3 {
+    font-size: 5rem;
   }
 
   /* Project page */
