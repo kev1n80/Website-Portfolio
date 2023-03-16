@@ -1,0 +1,115 @@
+#projects {
+  background-color: #363636;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.project-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 2rem auto;
+  width: 70vw;
+}
+
+.project {
+  align-items: center;
+  background-color: #d69fb8;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem black;
+  box-sizing: border-box;
+  display: flex;
+  height: 60vh;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5rem;
+  min-height: 450px;
+  padding: 1rem 3rem 2rem 3rem;
+  position: relative;
+  text-align: center;
+  width: 30%;
+}
+
+.project a {
+  font-size: 2rem;
+  padding: .25rem;
+}
+
+.project img {
+  height: 40%;
+  max-width: 100%;
+}
+
+.project-buttons {
+  column-gap: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: auto;
+  width: 70%;
+}
+
+.project-description  {
+  font-size: 1.25rem;
+}
+
+.project-position {
+  color: #474747;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.project-title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+/* For vertical screens users */
+@media only screen and (max-width: 700px) {
+  .project {
+    height: 75vh;
+    padding: 1rem 2rem 2rem 2rem;
+  }
+
+  .project img {
+    height: 30%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) { 
+  .project-description {
+    font-size: 1.2rem;
+  }
+ }
+
+ @media only screen and (min-width: 1000px) { 
+   .project-description {
+     font-size: 1.2rem;
+   }
+ }
+
+@media only screen and (max-width: 1100px) {
+  .project-showcase {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .project {
+    min-width: 300px;
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .project {
+    min-width: 300px;
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1650px) {
+  .project-description {
+    font-size: 1.25rem;
+  }
+}
