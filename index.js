@@ -15,6 +15,10 @@ function turnPxStringToInt(pxValue) {
   return parseInt(numberStr)
 }
 
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // HOME PAGE PORTRAIT SVG INTERACTIVITY
 function addPortraitReactions() {
   let contactMeButton = document.getElementById("contact-me");
@@ -157,23 +161,27 @@ function setNavbarStyles() {
 
 const bubbleAnimationTimeoutMS = 250;
 const bubbleAnimationDurationMS = 1500;
-let bubbleIntervalId = 0;
+var bubbleIntervalId = 0;
 const bubbleParentId = "landing";
 const bufferTimeMS = bubbleAnimationDurationMS + 2750;
-var lastBubbleTime = 0;
+var lastBubbleTime = 0; 
+var maxBubbleHeightPx = 116;
 
 // Randomly adds a bubble to the screen
 function createBubble() {
   const bubble = document.createElement('img');
+  document.getElementById(bubbleParentId).appendChild(bubble);
+
   bubble.src = "./images/bubble.svg";
   bubble.alt = "bubble";
   bubble.className = "water-bubbles";
 
-  // Choose a random y position for the bubble
-  bubble.style.left = `${Math.random() * 100}%`;
-  bubble.style.animation = `${bubbleAnimationDurationMS / 1000}s 1 normal floatup`;
-
-  document.getElementById(bubbleParentId).appendChild(bubble);
+  bubble.onload = function() {
+    // Choose a random y position for the bubble
+    const leftPx = randomIntFromInterval(0, document.getElementById("landing").clientWidth - bubble.clientWidth);
+    bubble.style.left = `${leftPx}px`;
+    bubble.style.animation = `${bubbleAnimationDurationMS / 1000}s 1 normal floatup`;
+  }
 
   // Remove bubble after animation ends
   setTimeout(function() {bubble.remove()}, bubbleAnimationDurationMS - 10);
@@ -181,12 +189,11 @@ function createBubble() {
   return bubble;
 }
 
-function createBubbleRow(bubble) {
+function createBubbleRow() {
   const parentWidth = document.getElementById(bubbleParentId).offsetWidth;
-  const bubbleWidth = bubble.clientWidth;
 
   // Number of bubbles to create
-  const maxNumBubbles = parentWidth / bubbleWidth;
+  const maxNumBubbles = parentWidth / maxBubbleHeightPx;
   const max = maxNumBubbles / 2;
   const min = maxNumBubbles / 3;
   
@@ -200,28 +207,21 @@ function createBubbleRow(bubble) {
 
 // Add bubbles depending on width and height of page
 function createBubbles() {
-  // set position to below screen
-  const bubble = createBubble();
+  // Number of rows of bubbles to create
+  const maxNumRows = screen.height / maxBubbleHeightPx;
+  const minRows = maxNumRows * .75;
 
-  bubble.onload = function(){
-    const bubbleHeight = bubble.clientHeight;
+  // Randomly create rows of bubbles
+  const numRows = randomIntFromInterval(minRows, maxNumRows);
+  var curRows = 0;
 
-    // Number of rows of bubbles to create
-    const maxNumRows = screen.height / bubbleHeight;
-    const minRows = maxNumRows * .75;
-
-    // Randomly create rows of bubbles
-    const numRows = Math.random() * (maxNumRows - minRows + 1) + minRows;
-    var curRows = 0;
-
-    bubbleIntervalId = setInterval(function() {
-      createBubbleRow(bubble);
-      curRows += 1;
-      if (curRows >= numRows) {
-        clearInterval(bubbleIntervalId);
-      }
-    }, bubbleAnimationTimeoutMS);
-  }
+  bubbleIntervalId = setInterval(function() {
+    createBubbleRow();
+    curRows += 1;
+    if (curRows >= numRows) {
+      clearInterval(bubbleIntervalId);
+    }
+  }, bubbleAnimationTimeoutMS);
 
   // Maybe use fractions to make a certain number of these?
   // Add tiny bubbles 

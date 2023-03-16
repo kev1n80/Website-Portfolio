@@ -10,12 +10,6 @@
   width: 100%;
 }
 
-#about h3 {
-  position: relative;
-  /*color: #276CD3;*/
-  z-index: 1;
-}
-
 #about-picture {
   height: 60vh;
   margin-left: 1rem;
@@ -50,19 +44,19 @@
   row-gap: 2rem;
 }
 
-.info {
+.info-content {
   display: flex;
   flex-direction: column;
 }
 
-.info a {
+.info-content a {
   font-size: 1em;
   margin: 0;
   padding: 0;
   position: relative;
 }
 
-.info p {
+.info-content p {
   font-size: 1.5rem;
   margin: 0;
   position: relative;
@@ -71,19 +65,19 @@
 .info-container {
   column-gap: 2rem;
   display: flex;
+  justify-content: center;
 }
 
 .info-page {
   /* min-height: 100vh; */
 }
 
-.image-hobby{
+.fun-info {
   width: 30vw;
 }
 
-.left {
+.reverse {
   flex-direction: row-reverse;
-  text-align: end;
 }
 
 .logo {
@@ -94,10 +88,6 @@
   align-items: center;
 }
 
-.right {
-  text-align: start;
-}
-
 .technical-infos {
   display: flex;
   flex-direction: column;
@@ -106,7 +96,7 @@
 
 /* Vertical Screens */
 @media only screen and (max-width: 600px) {
-  .image-hobby {
+  .fun-info {
     width: 50vw;
   }
 }
@@ -116,15 +106,15 @@
     margin-top: 2rem;
   }
 
-  .info {
+  .info-content {
     flex-direction: column;
   }
 
-  .info p {
+  .info-content p {
     font-size: 1.5rem;
   }
 
-  .image-hobby {
+  .fun-info {
     width: 45vw;
   }
 
@@ -146,7 +136,7 @@
     font-size: 1.3rem;
   }
 
-  .image-hobby {
+  .fun-info {
     width: 40vw;
   }
 }

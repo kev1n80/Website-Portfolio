@@ -23,11 +23,10 @@ h4 {
 }
 
 a {
-  font-size: 3rem;
   border-radius: 20px;
-  padding: 1%;
 }
 
+/* Animation */
 .water-bubbles {
   bottom: 0;
   position: absolute;
@@ -41,6 +40,11 @@ a {
   to {
     bottom: 100%;
   }
+}
+
+/* SVG */
+.about-svg-lower {
+  padding-bottom: 5rem;
 }
 
 #container {
@@ -83,103 +87,6 @@ a {
   z-index: 1;
 }
 
-/* Projects page */
-#projects {
-  background-color: #363636;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.project-showcase {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 10rem auto 10rem auto;
-  width: 70vw;
-}
-
-.project {
-  align-items: center;
-  background-color: #d69fb8;
-  box-shadow: 0.5rem 0.5rem 1rem black;
-  display: flex;
-  height: 55vh;
-  justify-content: center;
-  margin-bottom: 5rem;
-  min-height: 450px;
-  position: relative;
-  width: 35%;
-}
-
-.project img {
-  width: 80%;
-}
-
-.project-overlay {
-  align-items: center;
-  background-color: #d69fb8;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  opacity: 0;
-  position: absolute;
-  text-align: center;
-  transition: .5s ease;
-  width: 100%;
-}
-
- .project-overlay .filled-button {
-   border-bottom: 2px solid #d69fb8;
-   border-right: 2px solid #d69fb8;
- }
-
- .project-overlay a {
-   box-shadow: .4rem .4rem grey;
-   font-size: 2rem;
-   padding: 2%;
-   text-decoration: none;
- }
-
- .project-buttons {
-   display: flex;
-   justify-content: space-evenly;
-   width: 70%;
- }
-
- .project-description  {
-   font-size: 1rem;
- }
-
- .project-info {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 80%;
- }
-
-.project:hover .project-overlay {
-  opacity: 0.95;
-}
-
-.project-year {
-  margin: 0;
-  position: absolute;
-  right: 5%;
-  top: 7%;
-  transform: translateY(-100%);
-}
-
-.project-title {
-  font-size: 3rem;
-  left: 50%;
-  margin: 0;
-  position: absolute;
-  top: 7%;
-  transform: translateX(-50%);
-}
-
 /* Footer */
 .footer {
   background-color: white;
@@ -218,11 +125,7 @@ a {
 
 @media only screen and (min-width: 600px) and (max-width: 1000px) {
   h1, h2 {
-    font-size: 6rem;
-  }
- 
-  .project-description {
-    font-size: 1.2rem;
+    font-size: 5rem;
   }
  }
 
@@ -230,23 +133,7 @@ a {
   h1, h2 {
     font-size: 5rem;
   }
- 
-   .project-description {
-     font-size: 1.2rem;
-   }
  }
-
-@media only screen and (max-width: 1100px) {
-  .project-showcase {
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .project {
-    min-width: 300px;
-    width: 50%;
-  }
-}
 
 @media only screen and (min-width: 1200px) {
  h1, h2 {
@@ -264,10 +151,6 @@ a {
   h1, h2 {
     font-size: 7rem;
   }
-
-  .info p {
-    font-size: 2rem;
-  }
 }
 
 @media only screen and (min-width: 1650px) {
@@ -280,10 +163,5 @@ a {
 
   h3 {
     font-size: 5rem;
-  }
-
-  /* Project page */
-  .project-description {
-    font-size: 1.5rem;
   }
 }
