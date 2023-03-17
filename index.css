@@ -13,7 +13,8 @@ body {
 
 h3 {
   color: #E5E5E5;
-  margin: 0;
+  display: flex;
+  margin: auto;
   text-align: center;
 }
 

@@ -278,7 +278,40 @@ function cycleAdjective() {
   }, wordChangeTimeoutMS);
 }
 
-// ADD FUNCTIONS TO WEBSITE
+// Add functionality to accordions
+function addAccordionFunctionality() {
+  // Add the maxHeight to enable transition animation
+  var projectShowcases = document.getElementsByClassName("project-showcase");
+
+  // TODO: If screen resizes, recalculate 'projectShowcaseSizes'
+  const projectShowcaseSizes = [];
+  for (const projects of projectShowcases) {
+    const size = projects.scrollHeight + "px";
+    projects.style.maxHeight = size;
+    projectShowcaseSizes.push(size);
+  }
+
+  var titles = document.getElementsByClassName("project-showcase-title");
+
+  for (i = 0; i < titles.length; i++) {
+    const title = titles[i];
+    const size = projectShowcaseSizes[i];
+    title.addEventListener("click", function() {
+      // Toggle the "active" class
+      this.classList.toggle("active");
+
+      // Toggle between showing and hiding projects
+      var projects = this.nextElementSibling;
+      if (projects.style.maxHeight === "0px") {
+        projects.style.maxHeight = size;
+      } else {
+        projects.style.maxHeight = 0;
+      }
+    });
+  }
+}
+
+// ADDS FUNCTIONS TO WEBSITE
 function addFunctionsToScroll() {
   window.onscroll = () => {
     setNavbarStyles();
@@ -290,6 +323,7 @@ window.onload = function() {
   addPortraitReactions();
   addFunctionsToScroll();
   setNavbarStyles();
+  addAccordionFunctionality();
 
   // TODO: have changeAdjective change to "Artist" rather than "Engineer"
   cycleAdjective();
